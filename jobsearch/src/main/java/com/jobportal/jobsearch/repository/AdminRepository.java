@@ -9,4 +9,6 @@ import com.jobportal.jobsearch.entity.AdminEntity;
 @Repository
 public interface AdminRepository extends JpaRepository<AdminEntity, Integer>{
 	
+	public AdminEntity findByUsernameAndPassword(String username, String password);
+	
 }

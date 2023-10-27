@@ -1,29 +1,30 @@
 package com.jobportal.jobsearch.controllers;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jobportal.jobsearch.entity.AdminEntity;
-import com.jobportal.jobsearch.repository.AdminRepository;
+import com.jobportal.jobsearch.services.AdminService;
 
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
 
 	@Autowired
-	AdminRepository adminRepository;
+	AdminService adminService;
 	
 	
-	@GetMapping("/details")
-	public List<AdminEntity> getAdminDetails() {
+	
+	@GetMapping("/login")
+	public String login(@RequestParam(name = "user") String username , @RequestParam(name = "pass") String password) {
+	
 		
-		List<AdminEntity> findAll = adminRepository.findAll();
-		
-		return findAll;
+		String message = adminService.login(username, password);
+	
+		return message;
 	}
+	
 	
 }
