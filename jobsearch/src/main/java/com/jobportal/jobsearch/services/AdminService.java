@@ -6,5 +6,4 @@ public interface AdminService {
 	public String login(String username ,String password);
 	
 	
-	
 }
