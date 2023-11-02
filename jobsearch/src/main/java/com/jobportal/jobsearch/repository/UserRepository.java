@@ -7,5 +7,8 @@ import com.jobportal.jobsearch.entity.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer>{
+	
+	
+	public User findByNameAndPassword(String username , String password);
 
 }
