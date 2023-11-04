@@ -8,5 +8,5 @@ import com.jobportal.jobsearch.entity.Organization;
 @Repository
 public interface OrgRepository extends JpaRepository<Organization, Integer>{
 
-	
+	  public Organization findByEmailAndPassword(String email, String password);
 }

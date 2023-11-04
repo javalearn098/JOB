@@ -8,8 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jobportal.jobsearch.entity.JobDetails;
+import com.jobportal.jobsearch.entity.Organization;
 import com.jobportal.jobsearch.entity.User;
 import com.jobportal.jobsearch.services.AdminService;
+import com.jobportal.jobsearch.services.JobService;
+import com.jobportal.jobsearch.services.OrgService;
 import com.jobportal.jobsearch.services.UserService;
 
 @RestController
@@ -21,6 +25,12 @@ public class AdminController {
 
 	@Autowired
 	UserService userService;
+
+	@Autowired
+	OrgService orgService;
+	
+	@Autowired
+	JobService jobService;
 
 	@GetMapping("/login")
 	public String login(@RequestParam(name = "user") String username, @RequestParam(name = "pass") String password) {
@@ -36,6 +46,19 @@ public class AdminController {
 		List<User> users = userService.getUsers();
 
 		return users;
+	}
+
+	@GetMapping("/orglist")
+	public List<Organization> orgList() {
+
+		List<Organization> companyList = orgService.companyList();
+
+		return companyList;
+	}
+	
+	@GetMapping("/jobList")
+	public List<JobDetails> getJobPostList(){
+		return jobService.getJobPostsList();
 	}
 
 }
