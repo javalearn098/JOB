@@ -1,5 +1,7 @@
 package com.jobportal.jobsearch.controllers;
 
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jobportal.jobsearch.entity.JobDetails;
 import com.jobportal.jobsearch.entity.User;
+import com.jobportal.jobsearch.services.JobService;
 import com.jobportal.jobsearch.services.UserService;
 
 @RestController
@@ -22,6 +26,9 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
+	@Autowired
+	JobService jobService;
+	
 	@PostMapping("/save")
 	public String saveUser(@RequestBody User user) {
 
@@ -38,6 +45,11 @@ public class UserController {
 
 		String message = userService.login(username, password);
 		return message;
+	}
+	
+	@GetMapping("/jobList")
+	public List<JobDetails> getJobPostList(){
+		return jobService.getJobPostsList();
 	}
 
 }

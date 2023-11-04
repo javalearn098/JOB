@@ -1,5 +1,7 @@
 package com.jobportal.jobsearch.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +26,26 @@ public class OrgServiceImpl implements OrgService{
 		}
 		
 		return "Failed to save org details...Please verify the details...!";
+	}
+
+	@Override
+	public String login(String username, String password) {
+		
+		Organization findByEmailAndPassword = orgRepository.findByEmailAndPassword(username, password);
+		
+		if(findByEmailAndPassword!=null) {
+			
+			return "Login Success...!";
+		}
+		return "Login Failed..! Please provide a valid username and password.";
+	}
+
+	@Override
+	public List<Organization> companyList() {
+		
+		  List<Organization> orgList = orgRepository.findAll();
+		  
+		return orgList;
 	}
 
 }

@@ -6,23 +6,26 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "organization")
+@Table(name = "company")
 public class Organization {
 
 	@Id
 	int id;
 
-	@Column(name = "orgName")
+	@Column(name = "company")
 	String orgName;
 
 	@Column(name = "address")
-	String addess;
+	String address;
 
 	@Column(name = "contact")
 	String contact;
 
 	@Column(name = "email")
 	String email;
+	
+	@Column(name = "password")
+	String password;
 
 	public int getId() {
 		return id;
@@ -40,12 +43,14 @@ public class Organization {
 		this.orgName = orgName;
 	}
 
-	public String getAddess() {
-		return addess;
+	
+
+	public String getAddress() {
+		return address;
 	}
 
-	public void setAddess(String addess) {
-		this.addess = addess;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public String getContact() {
@@ -64,10 +69,19 @@ public class Organization {
 		this.email = email;
 	}
 
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	@Override
 	public String toString() {
-		return "Organization [id=" + id + ", orgName=" + orgName + ", addess=" + addess + ", contact=" + contact
-				+ ", email=" + email + "]";
+		return "Organization [id=" + id + ", orgName=" + orgName + ", address=" + address + ", contact=" + contact
+				+ ", email=" + email + ", password=" + password + "]";
 	}
 
 }
