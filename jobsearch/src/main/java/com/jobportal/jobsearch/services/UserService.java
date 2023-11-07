@@ -12,4 +12,10 @@ public interface UserService {
 	public List<User> getUsers();
 	
 	public String login(String username, String password);
+
+	public String update(User user ,Integer id)  throws Exception;
+	
+	
+	public String delete(Integer id);
+	
 }
