@@ -1,8 +1,17 @@
 package com.jobportal.jobsearch.entity;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -10,6 +19,7 @@ import jakarta.persistence.Table;
 public class User {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 
 	@Column(name = "name")
@@ -30,8 +40,15 @@ public class User {
 	@Column(name = "qualification")
 	String qualification;
 
-	@Column(name = "address")
-	String address;
+	/*
+	 * @OneToOne(cascade = CascadeType.ALL)
+	 * 
+	 * @JoinColumn(name = "address_id",referencedColumnName = "id")
+	 */
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "address_id", referencedColumnName = "id")
+	List<AddressEntity> address;
 
 	public int getId() {
 		return id;
@@ -89,11 +106,11 @@ public class User {
 		this.qualification = qualification;
 	}
 
-	public String getAddress() {
+	public List<AddressEntity> getAddress() {
 		return address;
 	}
 
-	public void setAddress(String address) {
+	public void setAddress(List<AddressEntity> address) {
 		this.address = address;
 	}
 
@@ -103,5 +120,4 @@ public class User {
 				+ mobile + ", skills=" + skills + ", qualification=" + qualification + ", address=" + address + "]";
 	}
 
-	
 }
