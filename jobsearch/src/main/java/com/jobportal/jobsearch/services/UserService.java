@@ -18,4 +18,6 @@ public interface UserService {
 	
 	public String delete(Integer id);
 	
+	public User getUserById(Integer id) throws Exception;
+	
 }

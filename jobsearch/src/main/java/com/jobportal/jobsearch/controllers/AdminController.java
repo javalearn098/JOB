@@ -60,5 +60,13 @@ public class AdminController {
 	public List<JobDetails> getJobPostList(){
 		return jobService.getJobPostsList();
 	}
+	
+	@GetMapping("/posts")
+	public Object getJobDetailsByentity() {
+		
+		
+		
+		return "";
+	}
 
 }

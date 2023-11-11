@@ -1,8 +1,14 @@
 package com.jobportal.jobsearch.entity;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -26,6 +32,10 @@ public class Organization {
 	
 	@Column(name = "password")
 	String password;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "company_id" , referencedColumnName = "id")
+	List<JobDetails> jobDetails;
 
 	public int getId() {
 		return id;
@@ -42,8 +52,14 @@ public class Organization {
 	public void setOrgName(String orgName) {
 		this.orgName = orgName;
 	}
-
 	
+		public List<JobDetails> getJobDetails() {
+		return jobDetails;
+	}
+
+	public void setJobDetails(List<JobDetails> jobDetails) {
+		this.jobDetails = jobDetails;
+	}
 
 	public String getAddress() {
 		return address;

@@ -2,6 +2,7 @@ package com.jobportal.jobsearch.services;
 
 import java.util.List;
 
+import com.jobportal.jobsearch.entity.JobDetails;
 import com.jobportal.jobsearch.entity.Organization;
 
 public interface OrgService {

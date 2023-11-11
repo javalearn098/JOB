@@ -45,5 +45,7 @@ public class OrgganizationController {
 		return jobService.postJobDetails(jobDetails);
 
 	}
+	
+	
 
 }

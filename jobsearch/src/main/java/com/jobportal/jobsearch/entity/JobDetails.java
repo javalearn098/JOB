@@ -1,5 +1,7 @@
 package com.jobportal.jobsearch.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -24,6 +26,10 @@ public class JobDetails {
 	@Column(name ="orgname")
 	String orgName;
 
+	@JsonProperty("companyId")
+	@Column(name="company_id" )
+	int companyId;
+	
 	public int getId() {
 		return id;
 	}
@@ -63,11 +69,21 @@ public class JobDetails {
 	public void setOrgName(String orgName) {
 		this.orgName = orgName;
 	}
+	
+	
+
+	public int getCompanyId() {
+		return companyId;
+	}
+
+	public void setCompanyId(int companyId) {
+		this.companyId = companyId;
+	}
 
 	@Override
 	public String toString() {
 		return "JobDetails [id=" + id + ", role=" + role + ", skills=" + skills + ", jobDescription=" + jobDescription
-				+ ", orgName=" + orgName + "]";
+				+ ", orgName=" + orgName + ", companyId=" + companyId + "]";
 	}
 	
 }
